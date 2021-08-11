@@ -1,5 +1,4 @@
-const src = require("./src/index")
-
+import src from "./src"
 
 window.exports = {
   "flomo": { // 注意：键对应的是 plugin.json 中的 features.code
