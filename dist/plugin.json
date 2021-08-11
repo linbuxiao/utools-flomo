@@ -1,0 +1,11 @@
+{
+	"logo": "logo.png",
+	"features": [
+		{
+		  "code": "flomo",
+		  "explain": "flomo",
+			"cmds":["flo"]
+		}
+	],
+  "preload": "preload.js"
+}
