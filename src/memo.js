@@ -12,18 +12,21 @@ module.exports = {
       if (+e.which === 13) {
         // 取出api并发送请求
         const url = window.utools.dbStorage.getItem("api")
-        axios.post(url, {
-          content: inputValue
-        }).then(res => {
-          if(res.data.message) {
-            utools.showNotification(res.data.message)
-          } else {
-            utools.showNotification(ERROR_MSG)
-          }
-          utools.outPlugin()
-        }).catch(err=> {
+        if(url.search("https://flomoapp.com/") === -1) {
           utools.showNotification(ERROR_MSG)
-        })
+          utools.outPlugin()
+        } else {
+          axios.post(url, {
+            content: inputValue
+          }).then(res => {
+            if(res.data.message) {
+              utools.showNotification(res.data.message)
+            } else {
+              utools.showNotification(ERROR_MSG)
+            }
+            utools.outPlugin()
+          })
+        }
       }
     })
   }
