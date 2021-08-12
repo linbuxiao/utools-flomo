@@ -2,9 +2,14 @@
 	"logo": "logo.png",
 	"features": [
 		{
-		  "code": "flomo",
-		  "explain": "flomo",
+		  "code": "memo",
+		  "explain": "create a memo",
 			"cmds":["flo"]
+		},
+		{
+			"code": "api",
+			"explain": "set api",
+			"cmds":["floapi"]
 		}
 	],
   "preload": "preload.js"
