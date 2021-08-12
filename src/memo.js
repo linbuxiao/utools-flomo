@@ -8,26 +8,31 @@ module.exports = {
     utools.setSubInput(({ text }) => {
       inputValue = text
     }, "请输入你想输入的")
-    document.addEventListener('keydown', e => {
+
+
+    const sendMemo = (e) => {
       if (+e.which === 13) {
         // 取出api并发送请求
         const url = window.utools.dbStorage.getItem("api")
+
         if(url.search("https://flomoapp.com/") === -1) {
-          utools.showNotification(ERROR_MSG)
-          utools.outPlugin()
+          utools.setSubInputValue(ERROR_MSG)
         } else {
           axios.post(url, {
             content: inputValue
           }).then(res => {
             if(res.data.message) {
-              utools.showNotification(res.data.message)
+              utools.setSubInputValue(res.data.message)
             } else {
-              utools.showNotification(ERROR_MSG)
+              utools.setSubInputValue(ERROR_MSG)
             }
-            utools.outPlugin()
           })
         }
+
+        document.removeEventListener('keydown', sendMemo)
       }
-    })
+    }
+
+    document.addEventListener('keydown', sendMemo)
   }
 }
